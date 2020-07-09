@@ -1,5 +1,5 @@
 'use strict';
-//we deliver serverless solutions, while never getting close to the metal
+//TODO: break apart connector and closer
 let verb = ['enable','abilify','empower','migrate','kludge', 'deliver','create','engineer','accelerate','measure','lift and shift'];
 let techAdjective = ['serverless','containerized','observable','big data','low-latency','clustered','no-code','low-code','noSQL','high-cardinality'];
 let techNoun = ['databases','solutions','deliverables','metrics','products','microservices','containers','data warehouses','dashboards','chaos engineering','test-driven development'];
