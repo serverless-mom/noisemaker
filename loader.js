@@ -9,7 +9,7 @@ const generateUUID = () => crypto.randomBytes(16).toString("hex");
 const documentClient = new AWS.DynamoDB.DocumentClient();
 
 exports.load = async event => {
-    const  title  = "randoname" + generateUUID;
+    const  title  = "randoname" + generateUUID();
     const params = {
         TableName: "mottoes", // The name of your DynamoDB table
         Item: { // Creating an Item with a unique id and with the passed title
