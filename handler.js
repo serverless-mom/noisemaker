@@ -8,6 +8,7 @@ let closer = ['getting close to the metal', 'working close to the metal', 'lifti
 const AWS = require("aws-sdk");
 const crypto = require("crypto");
 const documentClient = new AWS.DynamoDB.DocumentClient();
+let status = {run:false, stage:0}
 
 
 // Generate unique id with no external dependencies
@@ -20,6 +21,7 @@ function randomWord(items) {
 }
 
 module.exports.hello = async event => {
+  // TODO log out the event
   const message = `We ${randomWord(verb)} ${randomWord(techAdjective)} ${randomWord(techNoun)}, ${randomWord(connector)} ${randomWord(closer)}.`;
 
   const params = {
