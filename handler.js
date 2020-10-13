@@ -22,7 +22,10 @@ function randomWord(items) {
 
 module.exports.hello = async event => {
   // TODO log out the event
+  console.log(event);
   const message = `We ${randomWord(verb)} ${randomWord(techAdjective)} ${randomWord(techNoun)}, ${randomWord(connector)} ${randomWord(closer)}.`;
+  status.stage = 1;
+  status.message = message;
 
   const params = {
     TableName: "mottoes", // The name of my DynamoDB table, switch to an env value soon
@@ -30,11 +33,15 @@ module.exports.hello = async event => {
       mottoID: generateUUID(),
       motto: message
     }
-  };
+  }; 
+
 
   try {
     // Utilising the put method to insert an item into the table (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.NodeJs.03.html#GettingStarted.NodeJs.03.01)
-    const data = await documentClient.put(params).promise();
+    const data = await documentClient.put(params).promise();    
+    status.stage=2;
+    console.log(status);
+
     return {
       statusCode: 200,
       body: JSON.stringify(
@@ -44,6 +51,7 @@ module.exports.hello = async event => {
         null,
         2
       ),
+      
     };
   } catch (e) {
     return {
